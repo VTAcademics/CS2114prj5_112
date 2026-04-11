@@ -2,6 +2,8 @@ package prj5;
 public class alextv5002
 {
     //~ Fields ................................................................
+    // Merge Test
+    boolean starter = false;
 
     //~ Constructors ..........................................................
 
