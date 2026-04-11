@@ -10,12 +10,13 @@ package prj5;
 public class kimkim
 {
     //~ Fields ................................................................
+    // Intentional Conflict!
     private boolean conflict = false;
     
     //~ Constructors ..........................................................
 
     //~Public  Methods ........................................................
     public static void main(String[] args) {
-        System.out.print("hi");
+        System.out.print("Hello, World!");
     }
 }
