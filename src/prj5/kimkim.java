@@ -11,7 +11,7 @@ public class kimkim
 {
     //~ Fields ................................................................
     // Intentional Conflict!
-    private boolean conflict = false;
+    private boolean isConflictResolved = true;
     
     //~ Constructors ..........................................................
 
