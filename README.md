@@ -4,7 +4,7 @@
 - Kim, Kim - [kdhkr](https://github.com/kdhkr)
 - Mylavarupu, Jai - [jaim-hue](https://github.com/jaim-hue)
 - Trinidad, Alex - [alextv5002](https://github.com/alextv5002)
-- Gonzalez-Zunino, Santi
+- Gonzalez-Zunino, Santi - [GoSanGo06](https://github.com/GoSanGo06)
 
 ## Team Pledge
 Team Pledge document can be viewed by clicking [this link](https://drive.google.com/file/d/1NaXsGrZkUCVzm9Ns0JMWtTGrRm2IIntk/view?usp=sharing).
