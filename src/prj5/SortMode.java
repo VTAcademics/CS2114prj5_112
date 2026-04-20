@@ -10,5 +10,6 @@ package prj5;
  */
 public enum SortMode
 {
-
+    CHANNEL_NAME,
+    ENGAGEMENT_RATE
 }

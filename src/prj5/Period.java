@@ -10,5 +10,8 @@ package prj5;
  */
 public enum Period
 {
-
+    JANUARY,
+    FEBURARY,
+    MARCH,
+    FIRST_QUARTER
 }

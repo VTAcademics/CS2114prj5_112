@@ -10,5 +10,6 @@ package prj5;
  */
 public enum EngagementFormula
 {
-
+    TRADITIONAL,
+    REACH
 }
