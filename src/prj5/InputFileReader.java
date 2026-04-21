@@ -1,4 +1,7 @@
 package prj5;
+import java.io.IOException;
+import cs2.IOHelper;
+import java.util.Scanner;
 
 // Project 4 Spring 2026
 // Virginia Tech Honor Code Pledge:
