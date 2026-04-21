@@ -38,6 +38,18 @@ public class InfluencerData
     private static final String[] FIRST_QUARTER =
         { "january", "feburary", "march" };
 
+    /**
+     * Creates a new InfluencerData object.
+     * 
+     * @param username
+     *            the influencer's username
+     * @param channelName
+     *            the influencer's channel name
+     * @param country
+     *            the influencer's country
+     * @param topic
+     *            the influencer's main topic
+     */
     public InfluencerData(
         String username,
         String channelName,
@@ -163,7 +175,7 @@ public class InfluencerData
         int marchFollowers = 0;
         boolean hasMarch = false;
 
-        for (periodData pd : periods)
+        for (PeriodData pd : periods)
         {
             if (isFirstQuarter(pd.getMonth()))
             {
