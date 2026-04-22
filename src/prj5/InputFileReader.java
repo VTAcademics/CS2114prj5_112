@@ -32,7 +32,6 @@ import java.io.File;
  */
 public class InputFileReader
 {
-    // gotta wait for others
     private DoublyLinkedList<InfluencerData> influencers;
 
     private static final String[] VALID_MONTHS =
@@ -50,15 +49,17 @@ public class InputFileReader
     public InputFileReader(String fileName)
         throws IOException
     {
-        // gotta wait for others
+        //need doubltlinkedlist to become something for this to be resolved
         influencers = new DoublyLinkedList<InfluencerData>();
-        readFile(fileName);
+        readfile(fileName);
 
     }
 
 
     /**
+     * Returns the list of influencers parsed from the file
      * 
+     * @return DoublyLinkedList of InfluencerData
      */
     public DoublyLinkedList<InfluencerData> getInfluencers()
     {
@@ -67,7 +68,11 @@ public class InputFileReader
 
 
     /**
+     * Returns true if the given month string is a valid calendar month.
      * 
+     * @param month
+     *            the month string to check
+     * @return true if valid
      */
     private boolean isValidMonth(String month)
     {
@@ -80,19 +85,84 @@ public class InputFileReader
         }
         return false;
     }
-    
+
+
+    /**
+     * converts a string to an int. Returns 0 if the conversion fails.
+     * 
+     * @param str
+     *            the string to convert
+     * @return integer value, or 0 on failure
+     */
+    private int toInt(String str)
+    {
+        try
+        {
+            return Integer.parseInt(str);
+
+        }
+        catch (Exception e)
+        {
+            return 0;
+        }
+    }
+
+
     /**
      * 
      */
-    
-    
-    /**
-     * 
-     */
-    
-    
-    /**
-     * 
-     */
+    private void readfile(String fileName)
+        throws IOException
+    {
+        Scanner inStream = new Scanner(new File(fileName));
+        inStream.nextLine();
+
+        while (inStream.hasNextLine())
+        {
+            String line = inStream.nextLine().replaceAll(" ", "");
+            if (line.isEmpty())
+            {
+                continue;
+            }
+
+            String[] values = line.split(",");
+            if (values.length < 10)
+            {
+                continue;
+            }
+
+            String month = values[0];
+            String username = values[1];
+            String channel1 = values[2];
+            String country = values[3];
+            String mainTopic = values[4];
+            int likes = toInt(values[5]);
+            int posts = toInt(values[6]);
+            int followers = toInt(values[7]);
+            int comments = toInt(values[8]);
+            int views = toInt(values[9]);
+
+            if (!isValidMonth(month))
+            {
+                continue;
+            }
+
+            PeriodData periodData =
+                new PeriodData(month, likes, posts, followers, comments, views);
+
+            InfluencerData influencer = findInfluencer(username);
+            if (influencer == null)
+            {
+                influencer =
+                    new InfluencerData(username, channel1, country, mainTopic);
+                influencers.add(influencer);
+
+            }
+            influencer.addPeriodData(periodData);
+
+        }
+        inStream.close();
+
+    }
 
 }
