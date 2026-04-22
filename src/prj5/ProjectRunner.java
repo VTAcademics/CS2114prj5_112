@@ -3,9 +3,9 @@ package prj5;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-// 2 imports above are needed for alex's files when he adds them
 
-// Project 4 Spring 2026
+
+// Project 5 Spring 2026
 // Virginia Tech Honor Code Pledge:
 
 //
@@ -34,7 +34,8 @@ import java.util.ArrayList;
 public class ProjectRunner
 {
     /**
-     * 
+     * @param args command line arguments; args[0] is the input file name
+     * @throws IOException if the input file cannot be read
      */
     public static void main(String[] args) throws IOException
     {
@@ -52,14 +53,82 @@ public class ProjectRunner
         boolean showConsole = true;
         boolean showGUI = false;
         
-        if show(console) 
+        if (showConsole) 
         {
-            //temporary, alex needs to finish doubly linked list, channel name comparator and engage comparator
+            DoublyLinkedList<InfluencerData> influencers =
+                filer.getInfluencers();
+
+            DecimalFormat df = new DecimalFormat("#.#");
+            
+            DoublyLinkedList<InfluencerData> alphaSorted =
+                copyList(influencers);
+            alphaSorted.insertionSort(new ChannelNameComparator());
+
+            ArrayList<InfluencerData> alphaList = alphaSorted.toArrayList();
+            for (InfluencerData inf : alphaList)
+            {
+                double rate = inf.getTraditionalEngagement();
+                System.out.println(inf.getChannelName());
+                if (rate < 0)
+                {
+                    System.out.println("traditional: N/A");
+                }
+                else
+                {
+                    System.out.println("traditional: " + df.format(rate));
+                }
+                System.out.println("==========");
+            }
+            
+            System.out.println("**********");
+            System.out.println("**********");
+           
+            DoublyLinkedList<InfluencerData> reachSorted =
+                copyList(influencers);
+            reachSorted.insertionSort(new EngagementComparator());
+
+            ArrayList<InfluencerData> reachList = reachSorted.toArrayList();
+            for (InfluencerData inf : reachList)
+            {
+                double rate = inf.getReachEngagement();
+                System.out.println(inf.getChannelName());
+                if (rate < 0)
+                {
+                    System.out.println("reach: N/A");
+                }
+                else
+                {
+                    System.out.println("reach: " + df.format(rate));
+                }
+                System.out.println("==========");
+            }
+        }
+        if (showGUI) 
+        {
+            
         }
     
     }
-
     /**
-     * 
+     *  Creates a shallow copy of the influencer list so sorting one
+     * does not affect the other.
+     *
+     * @param original
+     *            the original DoublyLinkedList
+     * @return a new DoublyLinkedList with the same elements
      */
+    private static DoublyLinkedList<InfluencerData> copyList(
+        DoublyLinkedList<InfluencerData> original)
+    {
+        DoublyLinkedList<InfluencerData> copy =
+            new DoublyLinkedList<InfluencerData>();
+        ArrayList<InfluencerData> items = original.toArrayList();
+        for (InfluencerData inf : items)
+        {
+            copy.add(inf);
+        }
+        return copy;
+    }
 }
+
+//TEMPORARY: ChannelNameComparator compares ChannelData not InfluencerData, using InfluencerChannelNameComparator until fixed

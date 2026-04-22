@@ -3,8 +3,9 @@ package prj5;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
+import java.util.ArrayList;
 
-// Project 4 Spring 2026
+// Project 5 Spring 2026
 // Virginia Tech Honor Code Pledge:
 
 //
@@ -49,7 +50,6 @@ public class InputFileReader
     public InputFileReader(String fileName)
         throws IOException
     {
-        //need doubltlinkedlist to become something for this to be resolved
         influencers = new DoublyLinkedList<InfluencerData>();
         readfile(fileName);
 
@@ -84,6 +84,28 @@ public class InputFileReader
             }
         }
         return false;
+    }
+
+
+    /**
+     * Finds an existing InfluencerData in the list by username, or returns null
+     * if not found
+     * 
+     * @param username
+     *            the username to search for
+     * @return matching InfluencerData, or null
+     */
+    private InfluencerData findInfluencer(String username)
+    {
+        ArrayList<InfluencerData> list = influencers.toArrayList();
+        for (InfluencerData inf : list)
+        {
+            if (inf.getUsername().equals(username))
+            {
+                return inf;
+            }
+        }
+        return null;
     }
 
 
