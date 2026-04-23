@@ -10,12 +10,19 @@ package prj5;
  */
 public class AnalyticsManager
 {
+    private DoublyLinkedList<InfluencerData> records;
+
+    public AnalyticsManager(DoublyLinkedList<InfluencerData> records)
+    {
+        this.records = records;
+    }
 
     // ~ Fields ................................................................
 
     // ~ Constructors ..........................................................
 
     // ~Public Methods ........................................................
+
 
     @SuppressWarnings("javadoc")
     public DoublyLinkedList<ChannelData> getFilteredData(
@@ -34,6 +41,7 @@ public class AnalyticsManager
     {
         // TODO Auto-generated method stub
     }
+
 
     @SuppressWarnings("javadoc")
     public void sortData(

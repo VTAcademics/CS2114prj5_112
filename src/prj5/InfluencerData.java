@@ -36,7 +36,7 @@ public class InfluencerData
     private ArrayList<PeriodData> periods;
 
     private static final String[] FIRST_QUARTER =
-        { "january", "feburary", "march" };
+        { "january", "february", "march" };
 
     /**
      * Creates a new InfluencerData object.

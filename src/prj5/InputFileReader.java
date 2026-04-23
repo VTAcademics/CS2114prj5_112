@@ -36,7 +36,7 @@ public class InputFileReader
     private DoublyLinkedList<InfluencerData> influencers;
 
     private static final String[] VALID_MONTHS =
-        { "january", "febuary", "march", "april", "may", "june", "july",
+        { "january", "february", "march", "april", "may", "june", "july",
             "august", "september", "october", "november", "december" };
 
     /**
