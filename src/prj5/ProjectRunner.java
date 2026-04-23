@@ -21,7 +21,7 @@ package prj5;
 import java.io.IOException;
 
 /**
- * // -------------------------------------------------------------------------
+ * 
  * /** The entry point for the Social Media Dashboard application
  * 
  * @author Santiago Gonzalez-Zunino
