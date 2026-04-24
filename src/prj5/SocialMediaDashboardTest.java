@@ -24,8 +24,6 @@ public class SocialMediaDashboardTest
 {
     // ~ Fields ................................................................
 
-    private DoublyLinkedList<InfluencerData> influencerData;
-    private AnalyticsManager analyticsManager;
     private SocialMediaDashboard socialMediaDashboard;
 
     // ~ Constructors ..........................................................
@@ -35,8 +33,10 @@ public class SocialMediaDashboardTest
      */
     public void setUp()
     {
-        influencerData = new DoublyLinkedList<>();
-        analyticsManager = new AnalyticsManager(influencerData);
+        DoublyLinkedList<InfluencerData> influencerData =
+            new DoublyLinkedList<>();
+        AnalyticsManager analyticsManager =
+            new AnalyticsManager(influencerData);
         socialMediaDashboard = new SocialMediaDashboard(analyticsManager);
     }
 
@@ -50,7 +50,7 @@ public class SocialMediaDashboardTest
     {
         socialMediaDashboard.setPeriod(Period.JANUARY);
         assertEquals(socialMediaDashboard.getCurrentPeriod(), Period.JANUARY);
-        
+
         socialMediaDashboard.setPeriod(null);
         assertEquals(socialMediaDashboard.getCurrentPeriod(), Period.JANUARY);
     }
@@ -65,7 +65,7 @@ public class SocialMediaDashboardTest
         assertEquals(
             socialMediaDashboard.getCurrentSortMode(),
             SortMode.CHANNEL_NAME);
-        
+
         socialMediaDashboard.setSortMode(null);
         assertEquals(
             socialMediaDashboard.getCurrentSortMode(),
