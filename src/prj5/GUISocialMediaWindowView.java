@@ -12,7 +12,10 @@
 
 package prj5;
 
-import java.awt.Window;
+import java.awt.Color;
+import java.awt.GraphicsConfiguration;
+
+import cs2.*;
 
 // -------------------------------------------------------------------------
 /**
@@ -25,9 +28,23 @@ import java.awt.Window;
 public class GUISocialMediaWindowView
 {
     // ~ Fields ................................................................
+    private static final String WINDOW_TITLE = "Social Media Vis";
 
     private SocialMediaDashboard model;
     private Window window;
+
+    private Button traditionalButton;
+    private Button reachButton;
+
+    private Button sortByChannelNameButton;
+    private Button sortByEngagementRateButton;
+    private Button quitButton;
+
+    private Button januaryButton;
+    private Button feburaryButton;
+    private Button marchButton;
+    private Button firstQuarterButton;
+
     private DoublyLinkedList<ChannelData> graphData;
 
     // ~ Constructors ..........................................................
@@ -41,7 +58,6 @@ public class GUISocialMediaWindowView
     public GUISocialMediaWindowView(SocialMediaDashboard model)
     {
         this.model = model;
-        window = null;
         graphData = new DoublyLinkedList<ChannelData>();
         initializeControls();
         redrawGraph();
@@ -55,7 +71,41 @@ public class GUISocialMediaWindowView
      */
     public void initializeControls()
     {
-        // TODO Method stub
+        window = new Window(WINDOW_TITLE);
+
+        traditionalButton = new Button("Traditional Engagement Rate");
+        reachButton = new Button("Reach Engagement Rate");
+
+        sortByChannelNameButton = new Button("Sort by Channel Name");
+        sortByEngagementRateButton = new Button("Sort by Engagement Rate");
+        quitButton = new Button("Quit");
+
+        januaryButton = new Button("January");
+        feburaryButton = new Button("Feburary");
+        marchButton = new Button("March");
+        firstQuarterButton = new Button("First Quarter (Jan - March)");
+
+        traditionalButton.onClick(this, "onTraditionalFormula");
+        reachButton.onClick(this, "onReachFormula");
+        sortByChannelNameButton.onClick(this, "onSortByChannelName");
+        sortByEngagementRateButton.onClick(this, "onSortByEngagementRate");
+        quitButton.onClick(this, "onQuit");
+        januaryButton.onClick(this, "onJanuary");
+        feburaryButton.onClick(this, "onFeburary");
+        marchButton.onClick(this, "onMarch");
+        firstQuarterButton.onClick(this, "onFirstQuarter");
+
+        window.addButton(sortByChannelNameButton, WindowSide.NORTH);
+        window.addButton(sortByEngagementRateButton, WindowSide.NORTH);
+        window.addButton(quitButton, WindowSide.NORTH);
+
+        window.addButton(traditionalButton, WindowSide.WEST);
+        window.addButton(reachButton, WindowSide.WEST);
+
+        window.addButton(januaryButton, WindowSide.SOUTH);
+        window.addButton(feburaryButton, WindowSide.SOUTH);
+        window.addButton(marchButton, WindowSide.SOUTH);
+        window.addButton(firstQuarterButton, WindowSide.SOUTH);
     }
 
 
@@ -118,6 +168,12 @@ public class GUISocialMediaWindowView
      */
     private void drawGraphBars(DoublyLinkedList<ChannelData> data)
     {
+        if (window == null)
+            return;
+        if (data == null || data.isEmpty())
+            return;
+
+        int baseHeight = window.getGraphPanelHeight();
         // TODO Method stub
     }
 
