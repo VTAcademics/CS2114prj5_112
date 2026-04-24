@@ -46,7 +46,7 @@ public class DoublyLinkedList<T>
      * @author Alejandro Trinidad
      * @version 2026.04.21
      */
-    private static class Node<T>
+    static class Node<T>
     {
         T data;
         Node<T> next;
