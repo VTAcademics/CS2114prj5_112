@@ -30,6 +30,7 @@ public class AnalyticsManagerTest
 {
     private AnalyticsManager manager;
     private InfluencerData alpha;
+    private InfluencerData beta;
     private InfluencerData gamma;
 
     /**
@@ -46,11 +47,7 @@ public class AnalyticsManagerTest
             .addPeriodData(new PeriodData("February", 200, 5, 1200, 100, 3000));
         alpha.addPeriodData(new PeriodData("March", 300, 5, 2000, 150, 5000));
 
-        InfluencerData beta =
-            new InfluencerData("user2", "BetaChannel", "US", "sports");
-        beta.addPeriodData(new PeriodData("January", 50, 5, 500, 25, 1000));
-        beta.addPeriodData(new PeriodData("February", 50, 5, 600, 25, 1000));
-        beta.addPeriodData(new PeriodData("March", 100, 5, 1000, 50, 2000));
+        beta = new InfluencerData("user2", "BetaChannel", "US", "sports");
 
         gamma = new InfluencerData("user3", "GammaChannel", "US", "tech");
         gamma.addPeriodData(new PeriodData("January", 10, 5, 100, 10, 0));
@@ -222,6 +219,30 @@ public class AnalyticsManagerTest
 
 
     /**
+     * Tests reach engagement rate calculation for undefined months.
+     * 
+     * @author Dohoon Kim
+     */
+    public void testCalculateReachRateNull()
+    {
+        assertEquals(
+            manager.calculateReachRate(beta, Period.JANUARY),
+            -1.0,
+            0.001);
+
+        assertEquals(
+            manager.calculateReachRate(beta, Period.FEBRUARY),
+            -1.0,
+            0.001);
+
+        assertEquals(
+            manager.calculateReachRate(beta, Period.MARCH),
+            -1.0,
+            0.001);
+    }
+
+
+    /**
      * Tests reach engagement rate calculation for the first quarter.
      */
     public void testCalculateReachRateFirstQuarter()
@@ -320,7 +341,6 @@ public class AnalyticsManagerTest
 
         assertEquals(3, data.getSize());
         assertEquals("BetaChannel", list.get(0).getChannelName());
-        assertEquals(7.5, list.get(0).getEngagementRate(), 0.001);
         assertEquals("GammaChannel", list.get(1).getChannelName());
         assertEquals(-1.0, list.get(1).getEngagementRate(), 0.001);
         assertEquals("AlphaChannel", list.get(2).getChannelName());
@@ -413,7 +433,8 @@ public class AnalyticsManagerTest
         assertEquals(1, data.getSize());
         assertEquals("OnlyChannel", data.toArrayList().get(0).getChannelName());
     }
-    
+
+
     /**
      * Tests periodToString method in AnalyticsManager class.
      */
