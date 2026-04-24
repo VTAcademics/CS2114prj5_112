@@ -20,8 +20,20 @@ package prj5;
  */
 public enum Period
 {
+    /**
+     * Represents January, the first month of the year.
+     */
     JANUARY,
+    /**
+     * Represents February, the second month of the year.
+     */
     FEBURARY,
+    /**
+     * Represents March, the third month of the year.
+     */
     MARCH,
+    /**
+     * Represents January to March.
+     */
     FIRST_QUARTER
 }

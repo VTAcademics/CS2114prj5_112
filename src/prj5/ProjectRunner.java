@@ -12,6 +12,7 @@ package prj5;
 // do.
 
 // -- Santiago Gonzalez-Zunino (906693577)
+// -- Dohoon Kim (kim)
 
 // LLM Statement:
 
@@ -19,16 +20,22 @@ package prj5;
 // staff.
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
- * 
- * /** The entry point for the Social Media Dashboard application
+ * The entry point for the Social Media Dashboard application
  * 
  * @author Santiago Gonzalez-Zunino
+ * @author Dohoon Kim
  * @version Apr 23, 2026
  */
 public class ProjectRunner
 {
+
+    private static final boolean SHOW_CONSOLE = true;
+    private static final boolean SHOW_GUI = false;
+    private static final DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
     public static void main(String[] args)
     {
@@ -39,17 +46,79 @@ public class ProjectRunner
             InputFileReader reader = new InputFileReader(fileName);
             DoublyLinkedList<InfluencerData> influencers =
                 reader.getInfluencers();
-
             AnalyticsManager manager = new AnalyticsManager(influencers);
 
-            SocialMediaDashboard dashboard = new SocialMediaDashboard(manager);
+            if (SHOW_GUI)
+            {
+                SocialMediaDashboard dashboard =
+                    new SocialMediaDashboard(manager);
+                new GUISocialMediaWindowView(dashboard);
+            }
 
-            new GUISocialMediaWindowView(dashboard);
-
+            if (SHOW_CONSOLE)
+            {
+                printReportOnConsole(manager, EngagementFormula.TRADITIONAL);
+                System.out.println("**********");
+                System.out.println("**********");
+                printReportOnConsole(manager, EngagementFormula.REACH);
+            }
         }
         catch (IOException e)
         {
             System.out.println("Error: Could not read file " + fileName);
+        }
+    }
+
+
+    /**
+     * Prints Report on Console
+     * 
+     * @param manager
+     *            AnalyticsManager object
+     */
+    private static void printReportOnConsole(
+        AnalyticsManager manager,
+        EngagementFormula formula)
+    {
+        DoublyLinkedList<ChannelData> data =
+            manager.getFilteredData(Period.FIRST_QUARTER, formula);
+
+        manager.sortData(
+            data,
+            formula == EngagementFormula.TRADITIONAL
+                ? new ChannelNameComparator()
+                : new EngagementComparator());
+
+        // transform to ArrayList to make it iterable
+        ArrayList<ChannelData> channelList = data.toArrayList();
+
+        for (ChannelData channel : channelList)
+        {
+            System.out.println(channel.getChannelName());
+            
+            Double engagementRate = channel.getEngagementRate();            
+
+            if (formula == EngagementFormula.REACH)
+            {
+                if (engagementRate < 0)
+                {
+                    System.out.println("reach: N/A");
+                }
+                else
+                {
+                    System.out.println("reach: " +
+                        decimalFormat.format(channel.getEngagementRate())
+                    );
+                }
+            }
+            else
+            {
+                System.out.println("traditional: " +
+                    decimalFormat.format(channel.getEngagementRate())
+                );
+            }
+            
+            System.out.println("==========");
         }
     }
 }
