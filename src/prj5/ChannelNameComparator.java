@@ -20,8 +20,7 @@ package prj5;
 import java.util.Comparator;
 
 /**
- * // -------------------------------------------------------------------------
- * /** A comparator that compares channels by channel name
+ * A comparator that compares channels by channel name
  * 
  * @author Alejandro Trinidad
  * @version 2026.04.21

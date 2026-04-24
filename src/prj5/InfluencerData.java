@@ -20,8 +20,7 @@ import java.util.ArrayList;
 // staff.
 
 /**
- * // -------------------------------------------------------------------------
- * /** Stores identity information for one social media influencer and a list of
+ * Stores identity information for one social media influencer and a list of
  * their monthly PeriodData record
  * 
  * @author Santiago Gonzalez-Zunino

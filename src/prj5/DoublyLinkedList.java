@@ -20,9 +20,7 @@ package prj5;
 import java.util.ArrayList;
 
 /**
- * // -------------------------------------------------------------------------
- * /** Handles doubly linked lists with setter, getter, sort, and conversion
- * methods
+ * Handles doubly linked lists with setter, getter, sort, and conversion methods
  * 
  * @param <T>
  *            the type of data stored in the list

@@ -18,8 +18,7 @@ package prj5;
 // staff.
 
 /**
- * // -------------------------------------------------------------------------
- * /** Stores the social media statistics for one influencer for one month
+ * Stores the social media statistics for one influencer for one month
  * 
  * @author Santiago Gonzalez-Zunino
  * @version Apr 20, 2026

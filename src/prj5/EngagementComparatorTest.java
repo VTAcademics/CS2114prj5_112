@@ -20,12 +20,10 @@ package prj5;
 import student.TestCase;
 
 /**
- * // -------------------------------------------------------------------------
-/**
- *  Test class for EngagementComparator
+ * Test class for EngagementComparator
  * 
- *  @author Alejandro Trinidad (alextv5002)
- *  @version 2026.04.23
+ * @author Alejandro Trinidad (alextv5002)
+ * @version 2026.04.23
  */
 public class EngagementComparatorTest
     extends TestCase
@@ -52,6 +50,7 @@ public class EngagementComparatorTest
         c = new ChannelData("C", 1.0); // same as a
         d = new ChannelData("D", -1.0); // negative
     }
+
 
     /**
      * Tests the compare() method

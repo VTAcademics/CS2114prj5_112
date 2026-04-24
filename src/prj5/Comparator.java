@@ -18,8 +18,7 @@
 package prj5;
 
 /**
- * // -------------------------------------------------------------------------
- * /** Comparator interface that defines a strategy to compare two objects
+ * Comparator interface that defines a strategy to compare two objects
  * 
  * @param <T>
  *            the type of object being compared

@@ -19,12 +19,10 @@ package prj5;
 import student.TestCase;
 
 /**
- * // -------------------------------------------------------------------------
-/**
- *  Test class for ChannelNameComparator
+ * Test class for ChannelNameComparator
  * 
- *  @author Alejandro Trinidad (alextv5002)
- *  @version 2026.04.23
+ * @author Alejandro Trinidad (alextv5002)
+ * @version 2026.04.23
  */
 public class ChannelNameComparatorTest
     extends TestCase
@@ -51,6 +49,7 @@ public class ChannelNameComparatorTest
         c = new ChannelData("A", 3.0); // same as a
         d = new ChannelData("a", 1.0); // lowercase
     }
+
 
     /**
      * Tests the compare() method

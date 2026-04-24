@@ -20,8 +20,7 @@ package prj5;
 import student.TestCase;
 
 /**
- * // -------------------------------------------------------------------------
- * /** Test class for DoublyLinkedList
+ * Test class for DoublyLinkedList
  *
  * @author Alejandro Trinidad
  * @version 2026.04.23
@@ -50,6 +49,7 @@ public class DoublyLinkedListTest
         c = new InfluencerData("canadasport", "Canada Sport", "CA", "Sports");
     }
 
+
     /**
      * Tests the size() method
      */
@@ -60,7 +60,8 @@ public class DoublyLinkedListTest
 
         assertEquals(2, list.getSize());
     }
-    
+
+
     /**
      * Tests the isEmpty() method
      */
@@ -70,6 +71,7 @@ public class DoublyLinkedListTest
         list.add(a);
         assertFalse(list.isEmpty());
     }
+
 
     /**
      * Tests the contains() method
@@ -91,6 +93,7 @@ public class DoublyLinkedListTest
         assertTrue(list.contains(null));
     }
 
+
     /**
      * Tests the remove() method
      */
@@ -110,6 +113,7 @@ public class DoublyLinkedListTest
         assertTrue(list.remove(null));
     }
 
+
     /**
      * Tests the clear() method
      */
@@ -123,6 +127,7 @@ public class DoublyLinkedListTest
         assertTrue(list.isEmpty());
         assertEquals(0, list.getSize());
     }
+
 
     /**
      * Tests the toString() method
@@ -138,7 +143,8 @@ public class DoublyLinkedListTest
         assertTrue(result.endsWith("]"));
         assertEquals(2, list.getSize());
     }
-    
+
+
     /**
      * Tests the toArrayList() method
      */
@@ -147,11 +153,12 @@ public class DoublyLinkedListTest
         list.add(a);
         list.add(b);
         list.add(c);
-        
+
         assertEquals(a, list.toArrayList().get(0));
         assertEquals(b, list.toArrayList().get(1));
-        assertEquals(c, list.toArrayList().get(2));  
+        assertEquals(c, list.toArrayList().get(2));
     }
+
 
     /**
      * Tests the getHead() method
@@ -161,6 +168,7 @@ public class DoublyLinkedListTest
         assertNotNull(list.getHead()); // sentinel
     }
 
+
     /**
      * Tests the getTail() method
      */
@@ -168,7 +176,8 @@ public class DoublyLinkedListTest
     {
         assertNotNull(list.getTail()); // sentinel
     }
-    
+
+
     /**
      * Tests the insertionSort() method
      */
@@ -179,7 +188,7 @@ public class DoublyLinkedListTest
 
         assertTrue(list.isEmpty());
         assertEquals(0, list.getSize());
-        
+
         // size > 1
         list.add(c);
         list.add(a);
