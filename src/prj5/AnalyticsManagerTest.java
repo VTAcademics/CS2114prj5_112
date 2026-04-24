@@ -367,10 +367,19 @@ public class AnalyticsManagerTest
 
     /**
      * Tests that sorting with a null list does not cause an error.
+     * 
+     * @author Dohoon Kim
      */
     public void testSortDataNullList()
     {
-        manager.sortData(null, new ChannelNameComparator());
+        try
+        {
+            manager.sortData(null, new ChannelNameComparator());
+        }
+        catch (NullPointerException exception)
+        {
+            assertNull(exception);
+        }
     }
 
 

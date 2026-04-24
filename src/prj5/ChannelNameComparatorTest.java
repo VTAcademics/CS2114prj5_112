@@ -32,7 +32,6 @@ public class ChannelNameComparatorTest
     private ChannelData a;
     private ChannelData b;
     private ChannelData c;
-    private ChannelData d;
 
     // ~ Constructors ..........................................................
 
@@ -47,7 +46,6 @@ public class ChannelNameComparatorTest
         a = new ChannelData("A", 1.0);
         b = new ChannelData("B", 2.0);
         c = new ChannelData("A", 3.0); // same as a
-        d = new ChannelData("a", 1.0); // lowercase
     }
 
 
