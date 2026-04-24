@@ -47,6 +47,7 @@ public class ChannelNameComparator
     @Override
     public int compare(ChannelData a, ChannelData b)
     {
-        return a.getChannelName().compareTo(b.getChannelName());
+        return a.getChannelName().toLowerCase()
+            .compareTo(b.getChannelName().toLowerCase());
     }
 }
