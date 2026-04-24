@@ -94,7 +94,9 @@ public class ProjectRunner
 
         for (ChannelData channel : channelList)
         {
-            Double engagementRate = channel.getEngagementRate();
+            System.out.println(channel.getChannelName());
+            
+            Double engagementRate = channel.getEngagementRate();            
 
             if (formula == EngagementFormula.REACH)
             {
