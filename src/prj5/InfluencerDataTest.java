@@ -19,6 +19,12 @@ package prj5;
 
 import student.TestCase;
 
+/**
+ * Tests methods in InfluencerData class.
+ * 
+ * @author Santiago Gonzalez-Zunino
+ * @version Apr 23, 2026
+ */
 public class InfluencerDataTest
     extends TestCase
 {

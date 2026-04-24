@@ -68,6 +68,7 @@ public class PeriodData
 
     /**
      * Returns the month for this period
+     * @return the month for this period
      */
     public String getMonth()
     {
@@ -77,6 +78,7 @@ public class PeriodData
 
     /**
      * Returns total likes for this period
+     * @return total likes for this period
      */
     public int getLikes()
     {
@@ -86,6 +88,7 @@ public class PeriodData
 
     /**
      * Returns total points for this period
+     * @return total points for this period
      */
     public int getPosts()
     {
@@ -95,6 +98,7 @@ public class PeriodData
 
     /**
      * Returns total followers for this period
+     * @return total followers for this period
      */
     public int getFollowers()
     {
@@ -104,6 +108,7 @@ public class PeriodData
 
     /**
      * Returns total Comments for this period
+     * @return total Comments for this period
      */
     public int getComments()
     {
@@ -113,6 +118,7 @@ public class PeriodData
 
     /**
      * Returns total views for this period
+     * @return total views for this period
      */
     public int getViews()
     {
