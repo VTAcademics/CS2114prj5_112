@@ -29,9 +29,7 @@ public class AnalyticsManagerTest
     extends TestCase
 {
     private AnalyticsManager manager;
-    private DoublyLinkedList<InfluencerData> records;
     private InfluencerData alpha;
-    private InfluencerData beta;
     private InfluencerData gamma;
 
     /**
@@ -39,7 +37,8 @@ public class AnalyticsManagerTest
      */
     public void setUp()
     {
-        records = new DoublyLinkedList<InfluencerData>();
+        DoublyLinkedList<InfluencerData> records =
+            new DoublyLinkedList<InfluencerData>();
 
         alpha = new InfluencerData("user1", "AlphaChannel", "US", "music");
         alpha.addPeriodData(new PeriodData("January", 100, 5, 1000, 50, 2000));
@@ -47,7 +46,8 @@ public class AnalyticsManagerTest
             .addPeriodData(new PeriodData("February", 200, 5, 1200, 100, 3000));
         alpha.addPeriodData(new PeriodData("March", 300, 5, 2000, 150, 5000));
 
-        beta = new InfluencerData("user2", "BetaChannel", "US", "sports");
+        InfluencerData beta =
+            new InfluencerData("user2", "BetaChannel", "US", "sports");
         beta.addPeriodData(new PeriodData("January", 50, 5, 500, 25, 1000));
         beta.addPeriodData(new PeriodData("February", 50, 5, 600, 25, 1000));
         beta.addPeriodData(new PeriodData("March", 100, 5, 1000, 50, 2000));
@@ -376,8 +376,6 @@ public class AnalyticsManagerTest
     public void testSortDataNullList()
     {
         manager.sortData(null, new ChannelNameComparator());
-
-        assertTrue(true);
     }
 
 
