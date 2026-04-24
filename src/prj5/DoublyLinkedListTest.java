@@ -175,7 +175,7 @@ public class DoublyLinkedListTest
     public void testInsertionSort()
     {
         // size <= 1
-        list.insertionSort((a, b) -> 0);
+        list.insertionSort((x, y) -> 0);
 
         assertTrue(list.isEmpty());
         assertEquals(0, list.getSize());
