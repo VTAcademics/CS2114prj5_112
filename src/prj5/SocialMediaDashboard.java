@@ -31,7 +31,10 @@ public class SocialMediaDashboard
     // ~ Constructors ..........................................................
 
     /**
-     * Creates a new dashboard with default configurations
+     * Creates a new SocialMediaDashboard with default configurations
+     * 
+     * @param manager
+     *            the AnalyticsManager object to use
      */
     public SocialMediaDashboard(AnalyticsManager manager)
     {
