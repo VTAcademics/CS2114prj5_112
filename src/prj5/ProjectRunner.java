@@ -117,8 +117,8 @@ public class ProjectRunner
                     decimalFormat.format(channel.getEngagementRate())
                 );
             }
+            
+            System.out.println("==========");
         }
-
-        System.out.println("==========");
     }
 }
