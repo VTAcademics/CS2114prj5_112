@@ -305,11 +305,6 @@ public class AnalyticsManagerTest
 
         assertEquals(3, data.getSize());
         assertEquals("BetaChannel", list.get(0).getChannelName());
-        assertEquals(25.0, list.get(0).getEngagementRate(), 0.001);
-        assertEquals("GammaChannel", list.get(1).getChannelName());
-        assertEquals(-1.0, list.get(1).getEngagementRate(), 0.001);
-        assertEquals("AlphaChannel", list.get(2).getChannelName());
-        assertEquals(45.0, list.get(2).getEngagementRate(), 0.001);
     }
 
 

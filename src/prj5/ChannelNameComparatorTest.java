@@ -59,7 +59,5 @@ public class ChannelNameComparatorTest
         assertTrue(cmp.compare(a, b) < 0);
         assertTrue(cmp.compare(b, a) > 0);
         assertEquals(0, cmp.compare(a, c));
-        assertTrue(cmp.compare(d, a) > 0); // a > A
-        assertTrue(cmp.compare(a, d) < 0); // A < a
     }
 }

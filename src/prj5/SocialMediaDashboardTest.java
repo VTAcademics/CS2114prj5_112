@@ -50,6 +50,9 @@ public class SocialMediaDashboardTest
     {
         socialMediaDashboard.setPeriod(Period.JANUARY);
         assertEquals(socialMediaDashboard.getCurrentPeriod(), Period.JANUARY);
+        
+        socialMediaDashboard.setPeriod(null);
+        assertEquals(socialMediaDashboard.getCurrentPeriod(), Period.JANUARY);
     }
 
 
@@ -62,6 +65,11 @@ public class SocialMediaDashboardTest
         assertEquals(
             socialMediaDashboard.getCurrentSortMode(),
             SortMode.CHANNEL_NAME);
+        
+        socialMediaDashboard.setSortMode(null);
+        assertEquals(
+            socialMediaDashboard.getCurrentSortMode(),
+            SortMode.CHANNEL_NAME);
     }
 
 
@@ -71,6 +79,11 @@ public class SocialMediaDashboardTest
     public void testFormula()
     {
         socialMediaDashboard.setFormula(EngagementFormula.TRADITIONAL);
+        assertEquals(
+            socialMediaDashboard.getCurrentFormula(),
+            EngagementFormula.TRADITIONAL);
+
+        socialMediaDashboard.setFormula(null);
         assertEquals(
             socialMediaDashboard.getCurrentFormula(),
             EngagementFormula.TRADITIONAL);
