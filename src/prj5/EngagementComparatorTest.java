@@ -15,9 +15,9 @@
 // I have not used any assistance for the assignment beyond course resources and
 // staff.
 
-import student.TestCase;
-
 package prj5;
+
+import student.TestCase;
 
 /**
  * // -------------------------------------------------------------------------
@@ -50,7 +50,7 @@ public class EngagementComparatorTest
         a = new ChannelData("A", 1.0);
         b = new ChannelData("B", 2.0);
         c = new ChannelData("C", 1.0); // same as a
-        d = new channelData("D", -1.0); // negative
+        d = new ChannelData("D", -1.0); // negative
     }
 
     /**

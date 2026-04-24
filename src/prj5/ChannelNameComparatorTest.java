@@ -14,10 +14,9 @@
 
 // I have not used any assistance for the assignment beyond course resources and
 // staff.
+package prj5;
 
 import student.TestCase;
-
-package prj5;
 
 /**
  * // -------------------------------------------------------------------------
