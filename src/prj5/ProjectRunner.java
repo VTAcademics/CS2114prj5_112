@@ -104,15 +104,16 @@ public class ProjectRunner
                 }
                 else
                 {
-                    System.out.println("reach: " + channel.getEngagementRate());
+                    System.out.println("reach: " +
+                        decimalFormat.format(channel.getEngagementRate())
+                    );
                 }
             }
             else
             {
-                System.out.println(
-                    (formula == EngagementFormula.TRADITIONAL)
-                        ? "traditional: "
-                        : "reach: " + channel.getEngagementRate());
+                System.out.println("traditional: " +
+                    decimalFormat.format(channel.getEngagementRate())
+                );
             }
         }
 
