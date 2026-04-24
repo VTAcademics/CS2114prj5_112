@@ -40,7 +40,7 @@ public class EngagementComparator
      * @param a
      *            first channel
      * @param b
-     *            second channe
+     *            second channel
      * @return a positive integer if a's engagement rate is greater than b, 0 if
      *             equal, and negative if a < b
      */

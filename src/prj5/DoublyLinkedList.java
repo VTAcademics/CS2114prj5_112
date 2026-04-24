@@ -48,10 +48,16 @@ public class DoublyLinkedList<T>
      */
     static class Node<T>
     {
-        T data;
-        Node<T> next;
-        Node<T> prev;
+        private T data;
+        private Node<T> next;
+        private Node<T> prev;
 
+        /**
+         * Creates a node with data
+         * 
+         * @param data
+         *            the value stored in the node
+         */
         Node(T data)
         {
             this.data = data;
@@ -151,7 +157,7 @@ public class DoublyLinkedList<T>
     /**
      * Gets the size of the list
      * 
-     * @returns the size of the list
+     * @return the size of the list
      */
     public int getSize()
     {
@@ -190,7 +196,9 @@ public class DoublyLinkedList<T>
     public void insertionSort(Comparator<T> cmp)
     {
         if (size <= 1)
+        {
             return;
+        }
 
         Node<T> curr = head.next.next;
 
