@@ -21,6 +21,12 @@ package prj5;
  */
 public enum SortMode
 {
+    /**
+     * Sort by Channel Name (`ChannelNameComparator`)
+     */
     CHANNEL_NAME,
+    /**
+     * Sort by Engagement Rate (`EngagementComparator`)
+     */
     ENGAGEMENT_RATE
 }

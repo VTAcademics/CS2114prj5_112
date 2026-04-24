@@ -21,6 +21,14 @@ package prj5;
  */
 public enum EngagementFormula
 {
+    /**
+     * Utilizes Traditional Engagement Formula:
+     * {@code ((comments + likes) / follower count) * 100}
+     */
     TRADITIONAL,
+    /**
+     * Utilizes Reach Engagement Formula:
+     * {@code ((comments + likes) / number of views) * 100}
+     */
     REACH
 }
