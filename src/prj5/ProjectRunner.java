@@ -69,30 +69,53 @@ public class ProjectRunner
         }
     }
 
+
     /**
      * Prints Report on Console
-     * @param manager AnalyticsManager object
+     * 
+     * @param manager
+     *            AnalyticsManager object
      */
     private static void printReportOnConsole(
-        AnalyticsManager manager, EngagementFormula formula
-    ) {
-        DoublyLinkedList<ChannelData> data = manager.getFilteredData(
-            Period.FIRST_QUARTER, formula
-        );
-        manager.sortData(data, new ChannelNameComparator());
-        
+        AnalyticsManager manager,
+        EngagementFormula formula)
+    {
+        DoublyLinkedList<ChannelData> data =
+            manager.getFilteredData(Period.FIRST_QUARTER, formula);
+
+        manager.sortData(
+            data,
+            formula == EngagementFormula.TRADITIONAL
+                ? new ChannelNameComparator()
+                : new EngagementComparator());
+
         // transform to ArrayList to make it iterable
         ArrayList<ChannelData> channelList = data.toArrayList();
-        
-        for (ChannelData channel: channelList)
+
+        for (ChannelData channel : channelList)
         {
-            System.out.println(
-                (formula == EngagementFormula.TRADITIONAL) ?
-                    "traditional: " : "reach: "
-                + channel.getEngagementRate()
-            );
+            Double engagementRate = channel.getEngagementRate();
+
+            if (formula == EngagementFormula.REACH)
+            {
+                if (engagementRate < 0)
+                {
+                    System.out.println("reach: N/A");
+                }
+                else
+                {
+                    System.out.println("reach: " + channel.getEngagementRate());
+                }
+            }
+            else
+            {
+                System.out.println(
+                    (formula == EngagementFormula.TRADITIONAL)
+                        ? "traditional: "
+                        : "reach: " + channel.getEngagementRate());
+            }
         }
-        
+
         System.out.println("==========");
     }
 }
