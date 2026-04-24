@@ -19,6 +19,11 @@ package prj5;
 
 import student.TestCase;
 
+/**
+ *  Tests the functionality of the PeriodData class.
+ *  @author Santiago Gonzalez-Zunino
+ *  @version Apr 23, 2026
+ */
 public class PeriodDataTest
     extends TestCase
 {
