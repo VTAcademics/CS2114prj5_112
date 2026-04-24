@@ -27,7 +27,7 @@ public enum Period
     /**
      * Represents February, the second month of the year.
      */
-    FEBURARY,
+    FEBRUARY,
     /**
      * Represents March, the third month of the year.
      */

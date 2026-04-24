@@ -96,7 +96,7 @@ public class AnalyticsManagerTest
      */
     public void testCalculateTraditionalRateFebruary()
     {
-        double rate = manager.calculateTraditionalRate(alpha, Period.FEBURARY);
+        double rate = manager.calculateTraditionalRate(alpha, Period.FEBRUARY);
 
         assertEquals(25.0, rate, 0.001);
     }
@@ -204,7 +204,7 @@ public class AnalyticsManagerTest
      */
     public void testCalculateReachRateFebruary()
     {
-        double rate = manager.calculateReachRate(alpha, Period.FEBURARY);
+        double rate = manager.calculateReachRate(alpha, Period.FEBRUARY);
 
         assertEquals(10.0, rate, 0.001);
     }
@@ -412,5 +412,16 @@ public class AnalyticsManagerTest
 
         assertEquals(1, data.getSize());
         assertEquals("OnlyChannel", data.toArrayList().get(0).getChannelName());
+    }
+    
+    /**
+     * Tests periodToString method in AnalyticsManager class.
+     */
+    public void testPeriodToString()
+    {
+        assertEquals(manager.periodToString(Period.JANUARY), "January");
+        assertEquals(manager.periodToString(Period.FEBRUARY), "February");
+        assertEquals(manager.periodToString(Period.MARCH), "March");
+        assertEquals(manager.periodToString(Period.FIRST_QUARTER), "");
     }
 }

@@ -278,13 +278,13 @@ public class AnalyticsManager
      *            the period to convert
      * @return the string representation of the period
      */
-    private String periodToString(Period period)
+    protected String periodToString(Period period)
     {
         if (period == Period.JANUARY)
         {
             return "January";
         }
-        if (period == Period.FEBURARY)
+        if (period == Period.FEBRUARY)
         {
             return "February";
         }

@@ -96,7 +96,7 @@ public class SocialMediaDashboardTest
     public void testGetCurrentViewData()
     {
         assertEquals(socialMediaDashboard.getCurrentViewData().getSize(), 0);
-        socialMediaDashboard.setSortMode(SortMode.CHANNEL_NAME);
+        socialMediaDashboard.setSortMode(SortMode.ENGAGEMENT_RATE);
         assertEquals(socialMediaDashboard.getCurrentViewData().getSize(), 0);
     }
 }
