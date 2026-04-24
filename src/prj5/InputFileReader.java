@@ -51,7 +51,7 @@ public class InputFileReader
         throws IOException
     {
         influencers = new DoublyLinkedList<InfluencerData>();
-        readfile(fileName);
+        readFile(fileName);
 
     }
 
@@ -131,9 +131,14 @@ public class InputFileReader
 
 
     /**
+     * Parses the CSV file to populate the influencers list.
      * 
+     * @param fileName
+     *            name of the file to read
+     * @throws IOException
+     *             if the file is missing or unreadable
      */
-    private void readfile(String fileName)
+    private void readFile(String fileName)
         throws IOException
     {
         Scanner inStream = new Scanner(new File(fileName));
