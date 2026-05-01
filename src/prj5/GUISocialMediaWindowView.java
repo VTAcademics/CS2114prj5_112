@@ -112,8 +112,11 @@ public class GUISocialMediaWindowView
 
     /**
      * Selects the traditional engagement formula.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onTraditionalFormula()
+    public void onTraditionalFormula(Button button)
     {
         model.setFormula(EngagementFormula.TRADITIONAL);
         onEngagementFormulaChange();
@@ -121,26 +124,17 @@ public class GUISocialMediaWindowView
 
 
     /**
-     * Selects the traditional engagement formula.
-     * @param button clicked button object
-     */
-    public void onTraditionalFormula(Button button) { onTraditionalFormula(); }
-
-
-    /**
      * Selects the reach engagement formula.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onReachFormula()
+    public void onReachFormula(Button button)
     {
         model.setFormula(EngagementFormula.REACH);
         onEngagementFormulaChange();
     }
-    
-    /**
-     * Selects the reach engagement formula.
-     * @param button clicked button object
-     */
-    public void onReachFormula(Button button) { onReachFormula(); }
+
 
     /**
      * Changes the formula and redraws
@@ -151,37 +145,33 @@ public class GUISocialMediaWindowView
         redrawGraph();
     }
 
+
     /**
      * Selects sorting via channel name.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onSortByChannelName()
+    public void onSortByChannelName(Button button)
     {
         model.setSortMode(SortMode.CHANNEL_NAME);
         onSortModeChange();
     }
-    
-    /**
-     * Selects sorting via channel name.
-     * @param button clicked button object
-     */
-    public void onSortByChannelName(Button button) { onSortByChannelName(); }
+
 
     /**
      * Selects sorting via channel name.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onSortByEngagementRate()
+    public void onSortByEngagementRate(Button button)
     {
         model.setSortMode(SortMode.ENGAGEMENT_RATE);
         onSortModeChange();
     }
-    
-    /**
-     * Selects sorting via channel name.
-     * @param button clicked button object
-     */
-    public void onSortByEngagementRate(Button button) { onSortByEngagementRate(); }
 
-    
+
     /**
      * Changes the sort mode and redraws
      */
@@ -191,51 +181,59 @@ public class GUISocialMediaWindowView
         redrawGraph();
     }
 
+
     /**
      * Selects January.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onJanuary()
+    public void onJanuary(Button button)
     {
         model.setPeriod(Period.JANUARY);
         onPeriodChange();
     }
-    
-    /**
-     * Selects January.
-     * @param button clicked button object
-     */
-    public void onJanuary(Button button) { onJanuary(); }
+
 
     /**
      * Selects February.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onFebruary()
+    public void onFebruary(Button button)
     {
         model.setPeriod(Period.FEBRUARY);
         onPeriodChange();
     }
-    
-    /**
-     * Selects February.
-     * @param button clicked button object
-     */
-    public void onFebruary(Button button) { onFebruary(); }
+
 
     /**
      * Selects March.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onMarch()
+    public void onMarch(Button button)
     {
         model.setPeriod(Period.MARCH);
         onPeriodChange();
     }
 
+
     /**
-     * Selects March.
-     * @param button clicked button object
+     * Selects First Quarter.
+     * 
+     * @param button
+     *            Clicked button object
      */
-    public void onMarch(Button button) { onMarch(); }
-    
+    public void onFirstQuarter(Button button)
+    {
+        model.setPeriod(Period.FIRST_QUARTER);
+        onPeriodChange();
+    }
+
+
     /**
      * Changes the period and redraws
      */
@@ -254,12 +252,19 @@ public class GUISocialMediaWindowView
         window = null;
         clearGraph();
     }
-    
+
+
     /**
      * Closes the view and clears the graph
-     * @param button clicked button
+     * 
+     * @param button
+     *            clicked button
      */
-    public void onQuit(Button button) { onQuit(); }
+    public void onQuit(Button button)
+    {
+        onQuit();
+    }
+
 
     /**
      * Redraws the graph for the GUI wrapper.
