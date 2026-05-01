@@ -34,7 +34,7 @@ public class ProjectRunner
 {
 
     private static final boolean SHOW_CONSOLE = true;
-    private static final boolean SHOW_GUI = false;
+    private static final boolean SHOW_GUI = true;
     private static final DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
     public static void main(String[] args)
