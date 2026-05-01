@@ -13,14 +13,14 @@
 package prj5;
 
 import java.awt.Color;
-import java.awt.GraphicsConfiguration;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import cs2.*;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * Displays SocialMediaDashboard as a bar chart GUI.
  * 
  * @author Dohoon Kim
  * @version Apr 20, 2026
@@ -28,7 +28,27 @@ import cs2.*;
 public class GUISocialMediaWindowView
 {
     // ~ Fields ................................................................
+
     private static final String WINDOW_TITLE = "Social Media Vis";
+    private static final String PATTERN = "#.#";
+
+    private static final int HEADER_X = 25;
+    private static final int FONT_SIZE = 14;
+    private static final String FONT_FAMILY = "Arial";
+
+    private static final int PERIOD_Y = 15;
+    private static final int FORMULA_Y = 40;
+    private static final int SORT_Y = 65;
+
+    private static final int BAR_START_X = 100;
+    private static final int BAR_GAP = 110;
+    private static final int BAR_WIDTH = 50;
+    private static final int MAX_BAR_HEIGHT = 300;
+    private static final int MIN_BAR_HEIGHT = 5;
+
+    private static final int LABEL_Y_OFFSET = 35;
+    private static final int VALUE_Y_OFFSET = 58;
+    private static final int MAX_LABEL_LENGTH = 13;
 
     private SocialMediaDashboard model;
     private Window window;
@@ -46,6 +66,7 @@ public class GUISocialMediaWindowView
     private Button firstQuarterButton;
 
     private DoublyLinkedList<ChannelData> graphData;
+    private DecimalFormat formatter;
 
     // ~ Constructors ..........................................................
 
@@ -59,6 +80,7 @@ public class GUISocialMediaWindowView
     {
         this.model = model;
         graphData = new DoublyLinkedList<ChannelData>();
+        formatter = new DecimalFormat(PATTERN);
         initializeControls();
         redrawGraph();
     }
@@ -73,6 +95,7 @@ public class GUISocialMediaWindowView
     {
         window = new Window(WINDOW_TITLE);
         window.setSize(1000, 700);
+        window.hideInfoPanel();
 
         traditionalButton = new Button("Traditional Engagement Rate");
         reachButton = new Button("Reach Engagement Rate");
@@ -111,10 +134,10 @@ public class GUISocialMediaWindowView
 
 
     /**
-     * Selects the traditional engagement formula.
+     * Selects the traditional engagement formula
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onTraditionalFormula(Button button)
     {
@@ -124,10 +147,10 @@ public class GUISocialMediaWindowView
 
 
     /**
-     * Selects the reach engagement formula.
+     * Selects the reach engagement formula
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onReachFormula(Button button)
     {
@@ -141,16 +164,15 @@ public class GUISocialMediaWindowView
      */
     public void onEngagementFormulaChange()
     {
-        // TODO Method stub
         redrawGraph();
     }
 
 
     /**
-     * Selects sorting via channel name.
+     * Selects sorting by channel name
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onSortByChannelName(Button button)
     {
@@ -160,10 +182,10 @@ public class GUISocialMediaWindowView
 
 
     /**
-     * Selects sorting via channel name.
+     * Selects sorting by engagement rate
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onSortByEngagementRate(Button button)
     {
@@ -177,7 +199,6 @@ public class GUISocialMediaWindowView
      */
     public void onSortModeChange()
     {
-        // TODO Method stub
         redrawGraph();
     }
 
@@ -186,7 +207,7 @@ public class GUISocialMediaWindowView
      * Selects January.
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onJanuary(Button button)
     {
@@ -199,7 +220,7 @@ public class GUISocialMediaWindowView
      * Selects February.
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onFebruary(Button button)
     {
@@ -212,7 +233,7 @@ public class GUISocialMediaWindowView
      * Selects March.
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onMarch(Button button)
     {
@@ -222,10 +243,10 @@ public class GUISocialMediaWindowView
 
 
     /**
-     * Selects First Quarter.
+     * Selects the first quarter
      * 
      * @param button
-     *            Clicked button object
+     *            clicked button object
      */
     public void onFirstQuarter(Button button)
     {
@@ -239,18 +260,7 @@ public class GUISocialMediaWindowView
      */
     public void onPeriodChange()
     {
-        // TODO Method stub
         redrawGraph();
-    }
-
-
-    /**
-     * Closes the view and clears the graph
-     */
-    public void onQuit()
-    {
-        window = null;
-        clearGraph();
     }
 
 
@@ -258,22 +268,52 @@ public class GUISocialMediaWindowView
      * Closes the view and clears the graph
      * 
      * @param button
-     *            clicked button
+     *            clicked button object
      */
     public void onQuit(Button button)
     {
-        onQuit();
+        clearGraph();
+        window = null;
+        System.exit(0);
     }
 
 
     /**
-     * Redraws the graph for the GUI wrapper.
+     * Returns the window.
+     * 
+     * @return the window
+     */
+    public Window getWindow()
+    {
+        return window;
+    }
+
+
+    /**
+     * Returns the last graph data drawn.
+     * 
+     * @return graph data
+     */
+    public DoublyLinkedList<ChannelData> getGraphData()
+    {
+        return graphData;
+    }
+
+    // ~ Private Methods .......................................................
+
+
+    /**
+     * Redraws the graph for the GUI wrapper
      */
     private void redrawGraph()
     {
         clearGraph();
-        drawGraphBars(model.getCurrentViewData());
-        updateLabels();
+
+        if (window != null)
+        {
+            drawGraphBars(model.getCurrentViewData());
+            updateLabels();
+        }
     }
 
 
@@ -285,30 +325,276 @@ public class GUISocialMediaWindowView
      */
     private void drawGraphBars(DoublyLinkedList<ChannelData> data)
     {
-        if (window == null)
+        if (window == null || data == null || data.isEmpty())
+        {
             return;
-        if (data == null || data.isEmpty())
-            return;
+        }
 
-        int baseHeight = window.getGraphPanelHeight();
-        // TODO Method stub
+        ArrayList<ChannelData> list = data.toArrayList();
+        double maxRate = findMaxRate(list);
+        int baseHeight = getGraphBaseHeight(window.getGraphPanelHeight());
+
+        for (int i = 0; i < list.size(); i++)
+        {
+            ChannelData channel = list.get(i);
+            graphData.add(channel);
+
+            int x = BAR_START_X + i * BAR_GAP;
+            int barHeight = getBarHeight(channel.getEngagementRate(), maxRate);
+            int y = baseHeight - barHeight;
+
+            Shape bar = new Shape(x, y, BAR_WIDTH, barHeight, getBarColor());
+            window.addShape(bar);
+
+            TextShape nameLabel = new TextShape(
+                x,
+                baseHeight + LABEL_Y_OFFSET,
+                shorten(channel.getChannelName()),
+                Color.BLACK,
+                FONT_SIZE,
+                FONT_FAMILY);
+            window.addShape(nameLabel);
+
+            TextShape valueLabel = new TextShape(
+                x,
+                baseHeight + VALUE_Y_OFFSET,
+                formatRate(channel.getEngagementRate()),
+                Color.BLACK,
+                FONT_SIZE,
+                FONT_FAMILY);
+            window.addShape(valueLabel);
+        }
     }
 
 
     /**
-     * Update labels for the graph bars
+     * Returns the graph baseline height
+     * 
+     * @param height
+     *            graph panel height
+     * @return baseline y coordinate
+     */
+    private int getGraphBaseHeight(int height)
+    {
+        if (height <= 0)
+        {
+            return 360;
+        }
+
+        return Math.max(360, height - 160);
+    }
+
+
+    /**
+     * Finds the largest valid rate in the provided list
+     * 
+     * @param list
+     *            channel data list
+     * @return largest valid rate
+     */
+    private double findMaxRate(ArrayList<ChannelData> list)
+    {
+        double max = 0.0;
+
+        for (ChannelData data : list)
+        {
+            Double rate = data.getEngagementRate();
+
+            if (rate != null && rate >= 0 && rate > max && !Double.isNaN(rate)
+                && !Double.isInfinite(rate))
+            {
+                max = rate;
+            }
+        }
+
+        return max;
+    }
+
+
+    /**
+     * Returns the height for one bar
+     * 
+     * @param rate
+     *            engagement rate
+     * @param maxRate
+     *            largest engagement rate
+     * @return bar height
+     */
+    private int getBarHeight(Double rate, double maxRate)
+    {
+        if (rate == null || rate < 0 || maxRate <= 0 || Double.isNaN(rate)
+            || Double.isInfinite(rate))
+        {
+            return MIN_BAR_HEIGHT;
+        }
+
+        return Math.max(
+            MIN_BAR_HEIGHT,
+            (int)Math.round((rate / maxRate) * MAX_BAR_HEIGHT));
+    }
+
+
+    /**
+     * Formats a rate for display
+     * 
+     * @param rate
+     *            engagement rate
+     * @return formatted rate or N/A
+     */
+    private String formatRate(Double rate)
+    {
+        if (rate == null || rate < 0 || Double.isNaN(rate)
+            || Double.isInfinite(rate))
+        {
+            return "N/A";
+        }
+
+        return formatter.format(rate);
+    }
+
+
+    /**
+     * Returns a random bar color for a channel
+     * 
+     * @return color for the channel
+     */
+    private Color getBarColor()
+    {
+        return new Color(
+            50 + (int)(Math.random() * 156),
+            50 + (int)(Math.random() * 156),
+            50 + (int)(Math.random() * 156));
+    }
+
+
+    /**
+     * Shortens long channel names so they fit under the bars
+     * 
+     * @param text
+     *            original label
+     * @return shortened label
+     */
+    private String shorten(String text)
+    {
+        if (text == null)
+        {
+            return "";
+        }
+
+        if (text.length() > MAX_LABEL_LENGTH)
+        {
+            return text.substring(0, MAX_LABEL_LENGTH);
+        }
+
+        return text;
+    }
+
+
+    /**
+     * Updates the graph header labels
      */
     private void updateLabels()
     {
-        // TODO Method stub
+        if (window == null)
+        {
+            return;
+        }
+
+        window.addShape(
+            new TextShape(
+                HEADER_X,
+                PERIOD_Y,
+                getPeriodLabel(),
+                Color.BLACK,
+                FONT_SIZE,
+                FONT_FAMILY));
+
+        window.addShape(
+            new TextShape(
+                HEADER_X,
+                FORMULA_Y,
+                getFormulaLabel(),
+                Color.BLACK,
+                FONT_SIZE,
+                FONT_FAMILY));
+
+        window.addShape(
+            new TextShape(
+                HEADER_X,
+                SORT_Y,
+                getSortLabel(),
+                Color.BLACK,
+                FONT_SIZE,
+                FONT_FAMILY));
     }
 
 
     /**
-     * Clears saved last graph data
+     * Gets the current period label
+     * 
+     * @return period label
+     */
+    private String getPeriodLabel()
+    {
+        if (model.getCurrentPeriod() == Period.JANUARY)
+        {
+            return "January";
+        }
+        else if (model.getCurrentPeriod() == Period.FEBRUARY)
+        {
+            return "February";
+        }
+        else if (model.getCurrentPeriod() == Period.MARCH)
+        {
+            return "March";
+        }
+
+        return "First Quarter (Jan-March)";
+    }
+
+
+    /**
+     * Gets the current formula label
+     * 
+     * @return formula label
+     */
+    private String getFormulaLabel()
+    {
+        if (model.getCurrentFormula() == EngagementFormula.REACH)
+        {
+            return "Reach Engagement Rate";
+        }
+
+        return "Traditional Engagement Rate";
+    }
+
+
+    /**
+     * Gets the current sorting label
+     * 
+     * @return sorting label
+     */
+    private String getSortLabel()
+    {
+        if (model.getCurrentSortMode() == SortMode.ENGAGEMENT_RATE)
+        {
+            return "Sorting by Engagement Rate";
+        }
+
+        return "Sorting by Channel Name";
+    }
+
+
+    /**
+     * Clears saved graph data and removes all shapes
      */
     private void clearGraph()
     {
         graphData.clear();
+
+        if (window != null)
+        {
+            window.removeAllShapes();
+        }
     }
 }
