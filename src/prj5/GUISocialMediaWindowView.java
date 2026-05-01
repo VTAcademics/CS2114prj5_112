@@ -41,7 +41,7 @@ public class GUISocialMediaWindowView
     private Button quitButton;
 
     private Button januaryButton;
-    private Button feburaryButton;
+    private Button februaryButton;
     private Button marchButton;
     private Button firstQuarterButton;
 
@@ -72,6 +72,7 @@ public class GUISocialMediaWindowView
     public void initializeControls()
     {
         window = new Window(WINDOW_TITLE);
+        window.setSize(1000, 700);
 
         traditionalButton = new Button("Traditional Engagement Rate");
         reachButton = new Button("Reach Engagement Rate");
@@ -81,7 +82,7 @@ public class GUISocialMediaWindowView
         quitButton = new Button("Quit");
 
         januaryButton = new Button("January");
-        feburaryButton = new Button("Feburary");
+        februaryButton = new Button("February");
         marchButton = new Button("March");
         firstQuarterButton = new Button("First Quarter (Jan - March)");
 
@@ -91,7 +92,7 @@ public class GUISocialMediaWindowView
         sortByEngagementRateButton.onClick(this, "onSortByEngagementRate");
         quitButton.onClick(this, "onQuit");
         januaryButton.onClick(this, "onJanuary");
-        feburaryButton.onClick(this, "onFeburary");
+        februaryButton.onClick(this, "onFebruary");
         marchButton.onClick(this, "onMarch");
         firstQuarterButton.onClick(this, "onFirstQuarter");
 
@@ -103,11 +104,43 @@ public class GUISocialMediaWindowView
         window.addButton(reachButton, WindowSide.WEST);
 
         window.addButton(januaryButton, WindowSide.SOUTH);
-        window.addButton(feburaryButton, WindowSide.SOUTH);
+        window.addButton(februaryButton, WindowSide.SOUTH);
         window.addButton(marchButton, WindowSide.SOUTH);
         window.addButton(firstQuarterButton, WindowSide.SOUTH);
     }
 
+
+    /**
+     * Selects the traditional engagement formula.
+     */
+    public void onTraditionalFormula()
+    {
+        model.setFormula(EngagementFormula.TRADITIONAL);
+        onEngagementFormulaChange();
+    }
+
+
+    /**
+     * Selects the traditional engagement formula.
+     * @param button clicked button object
+     */
+    public void onTraditionalFormula(Button button) { onTraditionalFormula(); }
+
+
+    /**
+     * Selects the reach engagement formula.
+     */
+    public void onReachFormula()
+    {
+        model.setFormula(EngagementFormula.REACH);
+        onEngagementFormulaChange();
+    }
+    
+    /**
+     * Selects the reach engagement formula.
+     * @param button clicked button object
+     */
+    public void onReachFormula(Button button) { onReachFormula(); }
 
     /**
      * Changes the formula and redraws
@@ -118,7 +151,37 @@ public class GUISocialMediaWindowView
         redrawGraph();
     }
 
+    /**
+     * Selects sorting via channel name.
+     */
+    public void onSortByChannelName()
+    {
+        model.setSortMode(SortMode.CHANNEL_NAME);
+        onSortModeChange();
+    }
+    
+    /**
+     * Selects sorting via channel name.
+     * @param button clicked button object
+     */
+    public void onSortByChannelName(Button button) { onSortByChannelName(); }
 
+    /**
+     * Selects sorting via channel name.
+     */
+    public void onSortByEngagementRate()
+    {
+        model.setSortMode(SortMode.ENGAGEMENT_RATE);
+        onSortModeChange();
+    }
+    
+    /**
+     * Selects sorting via channel name.
+     * @param button clicked button object
+     */
+    public void onSortByEngagementRate(Button button) { onSortByEngagementRate(); }
+
+    
     /**
      * Changes the sort mode and redraws
      */
@@ -128,7 +191,51 @@ public class GUISocialMediaWindowView
         redrawGraph();
     }
 
+    /**
+     * Selects January.
+     */
+    public void onJanuary()
+    {
+        model.setPeriod(Period.JANUARY);
+        onPeriodChange();
+    }
+    
+    /**
+     * Selects January.
+     * @param button clicked button object
+     */
+    public void onJanuary(Button button) { onJanuary(); }
 
+    /**
+     * Selects February.
+     */
+    public void onFebruary()
+    {
+        model.setPeriod(Period.FEBRUARY);
+        onPeriodChange();
+    }
+    
+    /**
+     * Selects February.
+     * @param button clicked button object
+     */
+    public void onFebruary(Button button) { onFebruary(); }
+
+    /**
+     * Selects March.
+     */
+    public void onMarch()
+    {
+        model.setPeriod(Period.MARCH);
+        onPeriodChange();
+    }
+
+    /**
+     * Selects March.
+     * @param button clicked button object
+     */
+    public void onMarch(Button button) { onMarch(); }
+    
     /**
      * Changes the period and redraws
      */
@@ -147,7 +254,12 @@ public class GUISocialMediaWindowView
         window = null;
         clearGraph();
     }
-
+    
+    /**
+     * Closes the view and clears the graph
+     * @param button clicked button
+     */
+    public void onQuit(Button button) { onQuit(); }
 
     /**
      * Redraws the graph for the GUI wrapper.
