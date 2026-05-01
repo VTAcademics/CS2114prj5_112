@@ -34,9 +34,16 @@ public class ProjectRunner
 {
 
     private static final boolean SHOW_CONSOLE = true;
-    private static final boolean SHOW_GUI = false;
+    private static final boolean SHOW_GUI = true;
     private static final DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
+    /**
+     * Entry point for social media dashboard application
+     * 
+     * @param args
+     *            optional command-line argument specifying the input file name;
+     *            defaults to "SampleInput1_2023.csv" if not provided
+     */
     public static void main(String[] args)
     {
         String fileName = (args.length > 0) ? args[0] : "SampleInput1_2023.csv";
@@ -95,8 +102,8 @@ public class ProjectRunner
         for (ChannelData channel : channelList)
         {
             System.out.println(channel.getChannelName());
-            
-            Double engagementRate = channel.getEngagementRate();            
+
+            Double engagementRate = channel.getEngagementRate();
 
             if (formula == EngagementFormula.REACH)
             {
@@ -106,18 +113,18 @@ public class ProjectRunner
                 }
                 else
                 {
-                    System.out.println("reach: " +
-                        decimalFormat.format(channel.getEngagementRate())
-                    );
+                    System.out.println(
+                        "reach: " + decimalFormat
+                            .format(channel.getEngagementRate()));
                 }
             }
             else
             {
-                System.out.println("traditional: " +
-                    decimalFormat.format(channel.getEngagementRate())
-                );
+                System.out.println(
+                    "traditional: "
+                        + decimalFormat.format(channel.getEngagementRate()));
             }
-            
+
             System.out.println("==========");
         }
     }
